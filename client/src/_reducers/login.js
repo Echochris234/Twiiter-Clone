@@ -1,9 +1,13 @@
-const login = (initData = { user: "" }, action) => {
+
+const login = (initData = { userData: "" }, action) => {
   switch (action.type) {
     case "LOGIN":
-      let accData = JSON.stringify(action.payload);
-      window.localStorage.setItem("user", accData);
-      return { ...initData, user: accData };
+      const accData = JSON.stringify(action.payload.data);
+      localStorage.setItem("userInfo", accData);
+      return { ...initData, userData: accData };
+    case "LOGOUT":
+      localStorage.clear();
+      return { userData: "" };
     default:
       return initData;
   }

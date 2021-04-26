@@ -31,6 +31,7 @@ function Tweetbox(props) {
                             dispatch(post(token, userPost));
                             // dispatch(getAllPosts());
                             history.push("/home");
+                        window.location.reload(false);
                             
                         }}
                     >

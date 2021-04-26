@@ -18,104 +18,128 @@ import { useDispatch } from "react-redux";
 
 function App() {
 
-  var [user, setUser] = useState(localStorage.getItem("user"));
-  useEffect(() => {
-    if(localStorage.getItem('user')){
-      setUser(localStorage.getItem("user"));
-    }else{
-      setUser(null)
-    }
-    
-  }, []);
+  return (
+    <div className="App">
+      <Switch>
+        <Route exact path="/" component={Landing} />
+      </Switch>
 
-  const history = useHistory();
-  // const dispatch = useDispatch();
+      <Switch>
+        <Route path="/home" component={Home} />
+      </Switch>
+
+      <Switch>
+        <Route path="/login" component={Login} />
+      </Switch>
+
+      <Switch>
+        <Route path="/signup" component={Signup} />
+      </Switch>
+
+      <Switch>
+        <Route path="/profile" component={Profile} />
+      </Switch>
+    </div>
+
+
+//   var [user, setUser] = useState(localStorage.getItem("userData"));
+//   useEffect(() => {
+//     if(localStorage.getItem('userData')){
+//       setUser(localStorage.getItem("userData"));
+//     }else{
+//       setUser(null)
+//     }
+    
+//   }, []);
+
+//   const history = useHistory();
+//   // const dispatch = useDispatch();
   
 
 
 
-  // return (
-console.log(user);
-    if(user){
+//   // return (
+// console.log(user);
+//     if(user){
      
-      // console.log(JSON.parse(userData).data.result._id)
-      return(
-    <div className="App">
+//       // console.log(JSON.parse(userData).data.result._id)
+//       return(
+//     <div className="App">
       
         
-          <Switch>
-            <Route exact path="/home"
-              component={() => <Home id={JSON.parse(user).data.result._id}  token={JSON.parse(user).data.token} />}
-            />
-          </Switch>
+//           <Switch>
+//             <Route exact path="/home"
+//               component={() => <Home id={JSON.parse(user).data.result._id}  token={JSON.parse(user).data.token} />}
+//             />
+//           </Switch>
 
-          <Switch>
-            <Route path="/profile" 
-              component={() => <Profile id={JSON.parse(user).data.result._id} token={JSON.parse(user).data.token}  />}
-            />
-          </Switch>
+//           <Switch>
+//             <Route path="/profile" 
+//               component={() => <Profile id={JSON.parse(user).data.result._id} token={JSON.parse(user).data.token}  />}
+//             />
+//           </Switch>
 
 
 
-      <div>
-            <Button
-              primary
-              basic
-              onClick={() => {
-                localStorage.setItem("user", "");
-                user = "";
-                history.push("/");
-                window.location.reload();
-              }}
-            >
-              Logout
-          </Button>
-      </div>
+//       <div>
+//             <Button
+//               primary
+//               basic
+//               onClick={() => {
+//                 localStorage.setItem("user", "");
+//                 user = "";
+//                 history.push("/");
+//                 window.location.reload();
+//               }}
+//             >
+//               Logout
+//           </Button>
+//       </div>
        
 
-      {/* <Switch>
-        <Route exact path="/" component={Landing} />
-      </Switch>
+//       {/* <Switch>
+//         <Route exact path="/" component={Landing} />
+//       </Switch>
 
-      <Switch>
-        <Route path="/login" component={Login} />
-      </Switch>
+//       <Switch>
+//         <Route path="/login" component={Login} />
+//       </Switch>
 
-      <Switch>
-        <Route path="/signup" component={Signup} />
-      </Switch>
+//       <Switch>
+//         <Route path="/signup" component={Signup} />
+//       </Switch>
 
-      <Switch>
-        <Route path="/profile" component={Profile} />
-      </Switch> */}
-    </div>
-      );
-    } else{
-      history.push("/")
+//       <Switch>
+//         <Route path="/profile" component={Profile} />
+//       </Switch> */}
+//     </div>
+//       );
+//     } else{
+//       history.push("/")
 
-      return(
-        <div className="App">
-      <Switch>
-        <Route exact path="/" component={Landing} />
-      </Switch>
+//       return(
+//         <div className="App">
+//       <Switch>
+//         <Route exact path="/" component={Landing} />
+//       </Switch>
 
 
-      <Switch>
-        <Route path="/login" component={Login} />
-      </Switch>
+//       <Switch>
+//         <Route path="/login" component={Login} />
+//       </Switch>
 
-      <Switch>
-        <Route path="/signup" component={Signup} />
-      </Switch>
+//       <Switch>
+//         <Route path="/signup" component={Signup} />
+//       </Switch>
 
-      {/* <Switch>
-        <Route path="/profile" component={Profile} />
-      </Switch> */}
-        </div>
+//       {/* <Switch>
+//         <Route path="/profile" component={Profile} />
+//       </Switch> */}
+//         </div>
 
-      );
-    }
-  // );
+//       );
+//     }
+   );
 }
 
 export default App;

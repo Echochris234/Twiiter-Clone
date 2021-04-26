@@ -4,14 +4,15 @@
     cursor: pointer;
 }
 
-.sidebarOption > .MuiSvgIcon-root{
+.sidebarOption .MuiSvgIcon-root{
     padding:20px;
 }
 
-.sidebarOption > h2 {
+.sidebarOption h2 {
     font-weight: 800;
     font-size: 15px;
     margin-right: 20px;
+    
 }
 
 .sidebarOption:hover {

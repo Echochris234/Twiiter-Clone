@@ -13,11 +13,36 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import {Button}from '@material-ui/core';
 import { NavLink, Link } from 'react-router-dom';
 
+import Grid from "@material-ui/core/Grid"
+import { useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 function Sidebar() {
     
+
+    const useStyles = makeStyles((theme) => ({
+        icons: {
+
+
+            [theme.breakpoints.down('xs')]: {
+                flex: 0.1
+
+
+
+            },
+        },
+    }));
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('xs'));
+
+    const classes = useStyles();
+    console.log(classes)
+
     return (
-        
-        <div className="sidebar ">
+    
+            <div className={`sidebar ${classes.icons}`}>
+            {/* <Grid container> */}
             <Link to="/home" style={{ textDecoration: 'none' }} className="text-dark">
                 <TwitterIcon className="sidebar__twitterIcon" />
                 {' '}
@@ -78,8 +103,11 @@ function Sidebar() {
 
             {/* Button ->Tweet */}
 
-            <Button variant="outlined" className="sidebar__tweet" fullWidth>Tweet</Button>
+            {/* <Button variant="outlined" className="sidebar__tweet" fullWidth>Tweet</Button> */}
+            {/* </Grid> */}
         </div>
+        
+    
     
     )
 }

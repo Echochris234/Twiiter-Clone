@@ -16,30 +16,28 @@ import Post from '../post/Post.js'
 const axios = require('axios');
 
 function ProfileFeed(props) {
+console.log(props);
     const id = props.id;
     const token= props.token;
     const dispatch = useDispatch();
-    console.log(props)
-    // let user=props.userData.userData._id
-    const [post, setPost] = useState([]);
 
+    
     useEffect(() => {
+        dispatch(getPosts(id));
+    }, [localStorage.getItem("userPosts"), dispatch]);
 
-        axios.get(`http://localhost:8000/posts/${id}`)
-            .then(res => {
+    // const img = useSelector((state) => {console.log(state)})
+    
+    // const posts = useSelector((state) => state.handlePost) || [];
 
-                const postData = res.data;
-
-                setPost(postData);
-            })
-
-    }, [])
-
-    useEffect(() => {
-        dispatch(getPosts(props.id));
-        console.log(dispatch(getPosts(props.id)))
-    }, [id, localStorage.getItem("posts"), dispatch]);
-    // const posts = useSelector((state) => state.getPosts.result) || [];
+    // console.log(posts);
+    // console.log(posts)
+    let tweets = JSON.parse(localStorage.getItem('userPosts'));
+    // const posts = useSelector((state) => state.handlePost) || [];
+    //    setPost(posts);
+    console.log(tweets);
+ 
+    
     return (
         <div className="feed">
             {/* Header */}
@@ -50,15 +48,15 @@ function ProfileFeed(props) {
 
 
             {/* TweetBox */}
-            <TweetBox userData={props.id} token={props.token} />
-
+             <TweetBox userData={id} token={token} />
+{/*
             {post.map(tweet => {
                 return (
                     <Post post={tweet} />
 
                 )
-            })}
-
+            })} */}
+            <Post tweet={tweets} tabName={props.tabName.toLowerCase()} id={props.id} token={props.token} />
         </div>
     )
 }

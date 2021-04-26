@@ -6,6 +6,10 @@ import{
     TwitterTweetEmbed,
 } from "react-twitter-embed";
 import SearchIcon from "@material-ui/icons/Search"
+import Grid from "@material-ui/core/Grid"
+import { useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
 function Widgets() {
@@ -15,16 +19,42 @@ function Widgets() {
     // {/* Twitter Timeline
     //             Twitter ShareButton
     //             Twitter Tweet embed */}
+
+
+
+
+    // const useStyles = makeStyles((theme) => ({
+    //     icons: {
+
+
+    //         [theme.breakpoints.down('sm')]: {
+    //             visibility: "hidden",
+
+
+
+    //         },
+    //     },
+    // }));
+
+    // const theme = useTheme();
+    // const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    // console.log(matches)
+    // const classes = useStyles();
+    // console.log(classes)
+
+
     return (
-        <div className="widgets">
+        <Grid container >
+            <div className={` widgets `} >
             <div className="widgets__input">
                 <SearchIcon className="widgets__searchIcon"/>
                 <input placeholder="Search Twitter" type="text"/>
             </div>
 
-            <div className="widgets__widgetContainer">
+                <div className={`widgets__widgetContainer `}>
                 <h2>What's happening</h2>
-                <TwitterTweetEmbed tweetId={"932586791953158144"} />
+                    {/* {matches ? <></> : <TwitterTweetEmbed tweetId={"932586791953158144"} /> } */}
+            <TwitterTweetEmbed tweetId={"932586791953158144"}  />
                 {/* <TwitterTimelineEmbed
                     sourceType="profile"
                     screenName="random"
@@ -38,7 +68,9 @@ function Widgets() {
             </div>
             
         </div>
-    )
-}
+        </Grid>
+    
+    
+    )}
 
 export default Widgets

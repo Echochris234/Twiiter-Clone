@@ -10,8 +10,14 @@ import Widgets from './widgets/Widgets.js'
 import { useDispatch } from "react-redux";
 
 function Profile( props) {
+  let userData = localStorage.getItem("userInfo");
 
+  console.log(JSON.parse(userData))
+  // const tabName=props.location.state.tabName
+  const id = JSON.parse(userData).result._id;
+  const token = JSON.parse(userData).token;
 
+  // window.location.reload();
   console.log(props);
 
 
@@ -20,7 +26,7 @@ function Profile( props) {
     
    <>
       <Sidebar />
-      <ProfileFeed tabName={"Profile"} id={props.id} token={props.token} />
+      <ProfileFeed tabName={"Profile"} id={id} token={token} />
       <Widgets/>
     </>
 
