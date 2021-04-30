@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme)=>({
 }));
 
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('s'));
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
     console.log(matches)
      const classes=useStyles();
     console.log(Icon)
@@ -35,8 +35,9 @@ const useStyles = makeStyles((theme)=>({
         <Grid container>
             <div className={`sidebarOption ${active && 'sidebarOption--active'} `}>     
                 <Icon />
-               
-                <h2 className={`${classes.icons}`}>{text}</h2>        
+                
+                {matches ? <></> : <h2>{text}</h2>}
+                     
             </div>   
         </Grid>
     );

@@ -4,6 +4,7 @@ import Landing from "./_components/Landing.js";
 import Login from "./_components/Login.js";
 import Signup from "./_components/Signup.js";
 import Home from "./_components/Home.js";
+import Bookmarks from "./_components/Bookmarks.js";
 import Profile from "./_components/Profile.js";
 import Header from './_components/Header.js'
 import Sidebar from './_components/sidebar/Sidebar.js'
@@ -38,6 +39,11 @@ function App() {
 
       <Switch>
         <Route path="/profile" component={Profile} />
+      </Switch>
+
+
+      <Switch>
+        <Route path="/bookmarks" component={Bookmarks} />
       </Switch>
     </div>
 

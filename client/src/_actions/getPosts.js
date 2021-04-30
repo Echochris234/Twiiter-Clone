@@ -43,6 +43,7 @@ export const likePost = (postId, token) => async (dispatch) => {
 export const deletePost = (postId, token) => async (dispatch) => {
     const res = await axios.delete(`http://localhost:8000/posts/${postId}`, {
         headers: { Authorization: "Bearer " + token },
+        postId,
     });
     dispatch({
         type: "DELETE_POST",

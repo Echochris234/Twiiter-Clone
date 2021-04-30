@@ -22,9 +22,9 @@ console.log(props);
     const dispatch = useDispatch();
 
     
-    useEffect(() => {
-        dispatch(getPosts(id));
-    }, [localStorage.getItem("userPosts"), dispatch]);
+    // useEffect(() => {
+    //     dispatch(getPosts(id));
+    // }, [localStorage.getItem("userPosts"), dispatch]);
 
     // const img = useSelector((state) => {console.log(state)})
     
@@ -32,10 +32,10 @@ console.log(props);
 
     // console.log(posts);
     // console.log(posts)
-    let tweets = JSON.parse(localStorage.getItem('userPosts'));
-    // const posts = useSelector((state) => state.handlePost) || [];
-    //    setPost(posts);
-    console.log(tweets);
+    // let tweets = JSON.parse(localStorage.getItem('userPosts'));
+    // // const posts = useSelector((state) => state.handlePost) || [];
+    // //    setPost(posts);
+    // console.log(tweets);
  
     
     return (
@@ -48,7 +48,7 @@ console.log(props);
 
 
             {/* TweetBox */}
-             <TweetBox userData={id} token={token} />
+            <TweetBox tabName={props.tabName.toLowerCase()} userData={id} token={token} />
 {/*
             {post.map(tweet => {
                 return (
@@ -56,7 +56,7 @@ console.log(props);
 
                 )
             })} */}
-            <Post tweet={tweets} tabName={props.tabName.toLowerCase()} id={props.id} token={props.token} />
+            <Post tabName={props.tabName.toLowerCase()} id={props.id} token={props.token} />
         </div>
     )
 }

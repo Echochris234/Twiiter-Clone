@@ -8,36 +8,28 @@ import { useTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
+import { useDispatch } from "react-redux";
+import { logout } from "./../_actions/auth.js"
+import { Button } from "semantic-ui-react"
+
 function Home(props) {
 
     let userData = localStorage.getItem("userInfo");
 
-    console.log(JSON.parse(userData))
-    // const tabName=props.location.state.tabName
+
     const id = JSON.parse(userData).result._id;
     const token = JSON.parse(userData).token;
-    // console.log(id,token);
-    console.log(props);
 
+  
 
-    const useStyles = makeStyles((theme) => ({
-        icons: {
-
-
-            [theme.breakpoints.down('md')]: {
-                visibility: "hidden",
-
-
-
-            },
-        },
-    }));
+    const history=useHistory();
+    const dispatch=useDispatch();
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('md'));
-    console.log(matches)
-    const classes = useStyles();
-    console.log(classes)
+  
+ 
+
 
     return (
         <>
@@ -49,7 +41,21 @@ function Home(props) {
 
         {/* Widgets */ }
         {matches ? <Widgets /> : <></> }
+
         {/* <Widgets /> */}
+            {/* <Button
+                onClick={(e) => {
+
+                    dispatch(logout(JSON.parse(localStorage.getItem("userInfo")).token));
+
+
+                    history.push("/");
+
+
+                }}
+            >
+                LOGOUT
+            </Button> */}
 
 
     </>

@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts, deletePost, likePost,getAllPosts } from "./../../_actions/getPosts";
 import { useHistory } from "react-router-dom";
+import { getBookmarks } from "./../../_actions/bookmarks";
 
 // import { useDispatch } from "react-redux";
 // import { Button, Segment } from "semantic-ui-react";
@@ -17,32 +18,22 @@ import Post from '../post/Post.js'
 const axios = require('axios');
 
 function Feed(props) {
-    // function getPost(){
-    //     dispatch(getAllPosts());
-    // }
+
     console.log(props);
+    let id =props.id;
+    let token=props.token;
     const dispatch = useDispatch();
     const history = useHistory();
 
-   const[post,setPost]=useState([]);
-
-    
-    const posts = useSelector((state) => state.handlePost) ||[]
     useEffect(() => {
-        dispatch(getAllPosts());
-    }, []);
-    // getPost();
-    let tweets = JSON.parse(localStorage.getItem('posts'));
-    // const posts = useSelector((state) => state.handlePost) || [];
-//    setPost(posts);
-    console.log(tweets);
-    
-
-    // setPost(localStorage.getItem("post"));
-   
-    // JSON.parse(user).data.result._id
+            dispatch(getBookmarks(id, token))
+        ;
+    }, [id, token, dispatch]);
 
 
+    // const posts = useSelector((state) => state.handlePost.postData) || []
+    const dbInfo = useSelector((state) => state) || []
+    console.log(dbInfo, "Bookmarks")
 
 
     return (
@@ -56,7 +47,7 @@ function Feed(props) {
            
            
             {/* TweetBox */}
-            <TweetBox id={props.id} token={props.token}/>
+            <TweetBox tabName={props.tabName.toLowerCase()} id={props.id} token={props.token}/>
            
         {/* {
 
@@ -64,7 +55,7 @@ function Feed(props) {
                return <Post tweet={tweet} id={props.id} token={props.token} />
             })
         }        */}
-            <Post tweet={tweets} tabName={props.tabName.toLowerCase()} id={props.id} token={props.token} />
+            <Post  tabName={props.tabName.toLowerCase()} id={props.id} token={props.token} />
 
          
             {/* <Post tabName={props.tabName} id={props.id} token={props.token}/> */}

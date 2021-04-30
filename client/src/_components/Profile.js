@@ -4,6 +4,9 @@ import Header from './Header.js'
 import Sidebar from './sidebar/Sidebar.js'
 import ProfileFeed from './feed/ProfileFeed.js'
 import Widgets from './widgets/Widgets.js'
+import { useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
 
@@ -19,6 +22,8 @@ function Profile( props) {
 
   // window.location.reload();
   console.log(props);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
 
 
   return (
@@ -27,7 +32,7 @@ function Profile( props) {
    <>
       <Sidebar />
       <ProfileFeed tabName={"Profile"} id={id} token={token} />
-      <Widgets/>
+      {matches ? <Widgets /> : <></>}
     </>
 
    

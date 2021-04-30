@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const Bookmark = require('../models/bookmarks')
 
 const createPost = async (req, res) => {
   try {
@@ -92,6 +93,22 @@ const likePost = async (req, res) => {
     });
 };
 
+const getBookmarkedPosts = async (req, res) => {
+  const bookmark = await Bookmark.find({ userID: req.user._id });
+  if (bookmark) {
+    const bookmarkedPosts = [];
+    for (let i = 0; i < bookmark[0].bookmark.length; i++) {
+      let post = await Post.findOne({ _id: bookmark[0].bookmark[i] }).populate(
+        "author"
+      );
+      if (post) {
+        bookmarkedPosts.push(post);
+      }
+    }
+    res.status(200).json({ bookmarkedPosts });
+  }
+};
+
 module.exports = {
   createPost,
   likePost,
@@ -100,4 +117,5 @@ module.exports = {
   getPosts,
   getUserPosts,
   getASinglePost,
+  getBookmarkedPosts,
 };

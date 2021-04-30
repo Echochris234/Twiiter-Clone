@@ -7,16 +7,17 @@ import "../App.css";
 
 export default function Login() {
   const [userData, setUser] = useState({ email: "", password: "" });
-  const dispatch = useDispatch();
-  const history = useHistory();
+ 
 
   // const account = useSelector((state) => console.log(state.login));
   // const posts = useSelector((state) => state.handlePost)
+  // const userInfo = useSelector((state) => console.log(state)) || []
+  // useEffect(() => {
+  //   dispatch(login(userData));
+  // }, []);
 
-  useEffect(() => {
-    dispatch(login(userData));
-  }, [localStorage.getItem("userData"), dispatch]);
-
+  const dispatch = useDispatch();
+  const history = useHistory();
   
 
 
@@ -30,7 +31,9 @@ export default function Login() {
              dispatch(login(userData));
               
               history.push("/");
-              window.location.reload();
+              
+              
+
               
             }}
           >
