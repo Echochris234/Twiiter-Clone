@@ -1,11 +1,9 @@
 import React, {useEffect,useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Container, Segment } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import {logout} from "./../_actions/auth.js"
-import Login from "./Login"
-import { getPosts, deletePost, likePost, getAllPosts } from "./../_actions/getPosts";
 export default function Landing() {
 
 
@@ -16,16 +14,6 @@ export default function Landing() {
     setUser(localStorage.getItem("userInfo"));
   }, []);
 
-
-  // NEXT STEPS:
-
-  //   Work on deleting post
-  // work on follow un follow
-  //   Work on bookmarks 
-  
-
-
-  // let userData = localStorage.getItem("userInfo");
   const history = useHistory();
   const dispatch = useDispatch();
   console.log(user);

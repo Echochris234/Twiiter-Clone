@@ -35,14 +35,14 @@ function Home(props) {
         <>
 
         <Sidebar />
-            {/* Feed  userData={JSON.parse(userData).data.result}*/ }
+            
 
         <Feed tabName={"Home"} id={id}  token={token} /> 
 
         {/* Widgets */ }
         {matches ? <Widgets /> : <></> }
 
-        {/* <Widgets /> */}
+        
             {/* <Button
                 onClick={(e) => {
 

@@ -35,8 +35,7 @@ function Post(props) {
         },
         email: true,
         phone: true,
-        mention: false,
-        hashtag: false,
+       
 
         stripPrefix: true,
         stripTrailingSlash: true,

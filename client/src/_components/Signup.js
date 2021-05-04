@@ -1,5 +1,3 @@
-// 
-
 import React, { useState } from "react";
 import { Form, Grid, Segment, Button } from "semantic-ui-react";
 import { useDispatch } from "react-redux";

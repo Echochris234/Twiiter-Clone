@@ -1,52 +1,71 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
-import { getPosts, deletePost, likePost, getAllPosts } from "./../../_actions/getPosts";
-import { getBookmarks, addBookmark, removeBookmark } from "./../../_actions/bookmarks";
+
+import {  likePost} from "./../../_actions/getPosts";
+import { getBookmarks,removeBookmark } from "./../../_actions/bookmarks";
 
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import './Post.css'
 import { Avatar } from "@material-ui/core"
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import RepeatIcon from '@material-ui/icons/Repeat';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import PublishIcon from '@material-ui/icons/Publish';
 
-import { Item, Icon, Button } from "semantic-ui-react";
+
+import {  Button } from "semantic-ui-react";
+
+import ReactHtmlParser from 'react-html-parser';
+import Autolinker from 'autolinker';
 function BookmarkPost(props) {
     const id = props.id;
     const token = props.token;
-    const tweets = props.tweet;
+    // const tweets = props.tweet;
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
+
+    var autolinker = new Autolinker({
+        urls: {
+            schemeMatches: true,
+            wwwMatches: true,
+            tldMatches: true
+        },
+        email: true,
+        phone: true,
+
+        stripPrefix: true,
+        stripTrailingSlash: true,
+        newWindow: true,
+
+        truncate: {
+            length: 0,
+            location: 'end'
+        },
+
+        className: ''
+    });
+
+
     console.log(props);
 
     useEffect(() => {
-        console.log("IM IN BOOKMARKS");
+        
         dispatch(getBookmarks(id, token));
     }, [id, token, dispatch]);
 
-    // let posts;
+    
     let posts = useSelector((state) => state.bookmarks.bookmarks) || []
 
-    // const dbInfo = useSelector((state) => state) || []
-    // if(props.tabName==="home" || props.tabName==="profile"){
-    //     posts= dbInfo.handlePost.postData;
-    // }else if(props.tabName==="bookmarks"){
-    //     posts=dbInfo.bookmarks.bookmarks
-    // }
 
-    // console.log(posts, props.tabName);
-    console.log("bookmarkPost", posts);
-
+    
+    let linkPost;
     return (
 
-        // <></>
+        
         <>
             {posts.length !== 0 ? (
                 <>
                     {posts.map((post) => {
+                        linkPost = autolinker.link(post.article);
                         return (
 
                             <div className="post">
@@ -68,7 +87,7 @@ function BookmarkPost(props) {
 
                                         <div className="post__headerDescription">
                                             <p>
-                                                {post.article}
+                                                {ReactHtmlParser(linkPost)}
                                             </p>
 
                                         </div>
@@ -78,46 +97,20 @@ function BookmarkPost(props) {
                                         <div className="post__footer">
                                             <ChatBubbleOutlineIcon fontSize="small" />
 
-                                            {/* {post.author._id === id ? <Button
-                                                onClick={(e) => {
-                                                    dispatch(deletePost(post._id, token));
-                                                    history.push(`/${props.tabName}`)
-                                                }}
-                                            >
-                                                <RepeatIcon fontSize="small" />Delete
-                      </Button> : <></>} */}
+                                            
 
 
-                                            {/* <FavoriteBorderIcon fontSize="small"/>{props.post.likes.length} */}
+                                          
                                             <Button disabled="true"
                                                 onClick={(e) => {
                                                     dispatch(likePost(post._id, token));
-                                                    // history.push(`/${props.tabName}`) 
-                                                    // window.location.reload(false); 
-
+                                                   
                                                 }}
                                             >
                                                 <FavoriteBorderIcon fontSize="small" style={{color:"red"}} /> Likes:  {post.likes.length}
                                             </Button>
 
-                                            {/* {post.likes.length} */}
-                                            {/* {props.tabName !== "bookmarks" ? <Button
-                                                onClick={(e) => {
-                                                    dispatch(addBookmark(id, post, token));
-                                                }}
-                                            >
-                                                <PublishIcon fontSize="small" /> Bookmark
-                                 </Button>
-                                                :
-
-                                                <Button
-                                                    onClick={(e) => {
-                                                        dispatch(removeBookmark(id, post, token));
-                                                    }}
-                                                >
-                                                    <PublishIcon fontSize="small" /> Unbookmark
-                                 </Button>
-                                            } */}
+                                          
                                             <Button
                                                 onClick={(e) => {
                                                     dispatch(removeBookmark(id, post, token));
@@ -141,7 +134,6 @@ function BookmarkPost(props) {
                 </>
             ) :
                 <>
-                    {/* <h1>NO POST FOUND</h1> */}
                     <></>
 
                 </>

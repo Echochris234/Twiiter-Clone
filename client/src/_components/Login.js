@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { Form, Grid, Segment, Button } from "semantic-ui-react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../_actions/auth";
 import "../App.css";
 
 export default function Login() {
   const [userData, setUser] = useState({ email: "", password: "" });
- 
-
-  // const account = useSelector((state) => console.log(state.login));
-  // const posts = useSelector((state) => state.handlePost)
-  // const userInfo = useSelector((state) => console.log(state)) || []
-  // useEffect(() => {
-  //   dispatch(login(userData));
-  // }, []);
 
   const dispatch = useDispatch();
   const history = useHistory();
