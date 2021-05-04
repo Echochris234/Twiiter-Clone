@@ -16,6 +16,8 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import axios from 'axios';
 import { Item, Icon, Button } from "semantic-ui-react";
+import ReactHtmlParser from 'react-html-parser';
+import Autolinker from 'autolinker';
 
 
 function Post(props) {
@@ -24,6 +26,30 @@ function Post(props) {
     const tweets=props.tweet;
     const dispatch = useDispatch();
     const history = useHistory();
+    
+    var autolinker = new Autolinker({
+        urls: {
+            schemeMatches: true,
+            wwwMatches: true,
+            tldMatches: true
+        },
+        email: true,
+        phone: true,
+        mention: false,
+        hashtag: false,
+
+        stripPrefix: true,
+        stripTrailingSlash: true,
+        newWindow: true,
+
+        truncate: {
+            length: 0,
+            location: 'end'
+        },
+
+        className: ''
+    });
+
 console.log(props);
 
     useEffect (()=>{
@@ -38,26 +64,24 @@ console.log(props);
         ;
     },[id,,dispatch]);
     
-// let posts;
+
      let posts = useSelector((state) => state.handlePost.postData) || []
 
-    const dbInfo = useSelector((state) => state) || []
-    // if(props.tabName==="home" || props.tabName==="profile"){
-    //     posts= dbInfo.handlePost.postData;
-    // }else if(props.tabName==="bookmarks"){
-    //     posts=dbInfo.bookmarks.bookmarks
-    // }
- 
-    // console.log(posts, props.tabName);
-    // console.log(dbPost,dbInfo);
-    
+
+
+    let linkPost;
+
     return (
 
-    // <></>
     <>
       {posts.length!==0?(
           <>
             {posts.map((post)=>{
+                linkPost=autolinker.link(post.article);
+                console.log(linkPost);
+                // doc = parser.parseFromString(linkPost, 'text/html');
+                // article=doc.body;
+                // console.log(article)
                 return(
 
                 <div className="post">
@@ -77,13 +101,18 @@ console.log(props);
 
                             </div>
 
-                            <div className="post__headerDescription">
+                                <div className="post__headerDescription" id="articles">
                                 <p>
-                                   {post.article}
+                                   
+                                      {/* {} */}
+                                   {/* {post.article} */}
+                                        {ReactHtmlParser(linkPost)}
+                                        
                                 </p>
-
+                                      
                             </div>
-
+                    
+                                
                             {/* <img src="https://images.unsplash.com/photo-1518965493882-35b838ace024?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2lmfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60s" alt=""/> */}
 
                             <div className="post__footer">
@@ -157,8 +186,9 @@ console.log(props);
                 </div>
                 );
             })}
-
+    
           </>
+          
       ):
       <>
       {/* <h1>NO POST FOUND</h1> */}
@@ -173,7 +203,7 @@ console.log(props);
     
     );
 
-
+   
 
 
 

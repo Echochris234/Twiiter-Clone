@@ -86,8 +86,20 @@ function Sidebar() {
 
             <SidebarOption text="More" Icon={MoreHorizIcon} />
            
-    
-       
+            {/* <Button
+                onClick={(e) => {
+                    
+                    dispatch(logout(JSON.parse(localStorage.getItem("userInfo")).token));
+                    
+                    
+                    history.push("/");
+                    
+                  
+                }}
+            >
+                <SidebarOption text="Logout" Icon={MoreHorizIcon} />
+            </Button>
+        */}
             {/* Button ->Tweet */}
 
             {/* <Button variant="outlined" className="sidebar__tweet" fullWidth>Tweet</Button> */}
