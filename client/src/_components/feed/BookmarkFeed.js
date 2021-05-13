@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { getPosts, deletePost, likePost } from "./../../_actions/getPosts";
-// import { useHistory } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { Button, Segment } from "semantic-ui-react";
-
-// import { Link } from "react-router-dom";
-// import { getPosts, deletePost, likePost } from "../../_actions/getPosts";
-// import { Item, Icon } from "semantic-ui-react";
-
+import React from 'react'
 import TweetBox from './Tweetbox.js'
 import './Feed.css'
 import BookmarkPost from '../post/BookmarkPost.js'
 
-const axios = require('axios');
+
 
 function BookmarkFeed(props) {
     
     const id = props.id;
     const token = props.token;
-    // const dispatch = useDispatch();
+    
 
     return (
         <div className="feed">

@@ -23,10 +23,7 @@ export const addBookmark = (userID, postID, token) => async (dispatch) => {
         }
     );
 
-    // dispatch({
-    //     type: "ADD_BOOKMARK",
-    //     payload: res,
-    // });
+
 };
 
 export const removeBookmark = (userID, postID, token) => async (dispatch) => {

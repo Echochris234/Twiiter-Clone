@@ -1,4 +1,3 @@
-
 import React from "react";
 import Follow from "./Follow.js";
 import { Avatar } from "@material-ui/core"
@@ -13,9 +12,8 @@ function ProfileTweetbox(props) {
     const profileId = props.userData;
     
 
-    let loggedInId = JSON.parse(localStorage.getItem("userInfo")).result._id;
-    console.log(loggedInId)
-    console.log(profileId)
+    
+   
 
     return (
         <div className="tweetBox">

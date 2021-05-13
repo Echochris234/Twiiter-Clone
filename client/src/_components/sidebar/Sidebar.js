@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from 'react'
+import React  from 'react'
 import './Sidebar.css'
 import SidebarOption from './SidebarOption';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -10,16 +10,14 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-// import {Button}from '@material-ui/core';
-import {useHistory, Link } from 'react-router-dom';
-import { useDispatch} from "react-redux";
-import { logout } from "./../../_actions/auth.js"
-import{Button} from "semantic-ui-react"
+
+import {Link } from 'react-router-dom';
+
+
 
 
 function Sidebar() {
-    const history = useHistory();
-    const dispatch = useDispatch();
+
  
  
 
@@ -86,24 +84,7 @@ function Sidebar() {
 
             <SidebarOption text="More" Icon={MoreHorizIcon} />
            
-            {/* <Button
-                onClick={(e) => {
-                    
-                    dispatch(logout(JSON.parse(localStorage.getItem("userInfo")).token));
-                    
-                    
-                    history.push("/");
-                    
-                  
-                }}
-            >
-                <SidebarOption text="Logout" Icon={MoreHorizIcon} />
-            </Button>
-        */}
-            {/* Button ->Tweet */}
-
-            {/* <Button variant="outlined" className="sidebar__tweet" fullWidth>Tweet</Button> */}
-            {/* </Grid> */}
+           
         </div>
         
     
