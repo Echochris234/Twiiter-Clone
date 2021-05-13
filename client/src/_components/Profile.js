@@ -17,7 +17,11 @@ function Profile( props) {
 
   // console.log(JSON.parse(userData))
   
+  // if (props.location.state){
+  //     console.log(props.location.state.id); 
+  // }
   const id = JSON.parse(userData).result._id;
+  // const profId = props.location.state.id;
   const token = JSON.parse(userData).token;
 
 
@@ -31,7 +35,8 @@ function Profile( props) {
     
    <>
       <Sidebar />
-      <ProfileFeed tabName={"Profile"} id={id} token={token} />
+      {props.location.state ? <ProfileFeed tabName={"Profile"} id={props.location.state.id} name={props.location.state.name} token={token} /> : <ProfileFeed tabName={"Profile"} id={id} name={JSON.parse(userData).result.name} token={token} /> }
+      {/* <ProfileFeed tabName={"Profile"} id={id} token={token} /> */}
       {matches ? <Widgets /> : <></>}
     </>
 

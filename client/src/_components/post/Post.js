@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { getPosts, deletePost, likePost, getAllPosts } from "./../../_actions/getPosts";
 import { getBookmarks, addBookmark, removeBookmark } from "./../../_actions/bookmarks";
 
-
+import { Link } from "react-router-dom";
 import './Post.css'
 import { Avatar} from "@material-ui/core"
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
@@ -26,6 +26,9 @@ function Post(props) {
     const tweets=props.tweet;
     const dispatch = useDispatch();
     const history = useHistory();
+
+    let userData = localStorage.getItem("userInfo");
+    const currId = JSON.parse(userData).result._id;
     
     var autolinker = new Autolinker({
         urls: {
@@ -89,10 +92,23 @@ console.log(props);
                     </div> 
                     <div className="post__body">
                         <div className="post__header">
+                             
                             <div className="post__headerText">
                                 <h3>
 
-                                    {post.author.name}
+                                        <Link style={{ textDecoration: 'none', color:'#50b7f5'}}
+                                            
+                                            to={{
+                                                pathname: `/profile/`,
+                                                state: {
+                                                    name: post.author.name,
+                                                    id: post.author._id,
+                                                    token: token,
+                                                },
+                                            }}
+                                        >
+                                            {post.author.name}
+                                        </Link>
                                     <span className="post_headerSpecial">
                                         <VerifiedUserIcon className="post_badge" /> @{post.author.email}
                                     </span>
@@ -100,12 +116,12 @@ console.log(props);
 
                             </div>
 
-                                <div className="post__headerDescription" id="articles">
+                                <div className="post__headerDescription" id="articles" >
                                 <p>
                                    
                                       {/* {} */}
                                    {/* {post.article} */}
-                                        {ReactHtmlParser(linkPost)}
+                                        {ReactHtmlParser(linkPost) }
                                         
                                 </p>
                                       
@@ -117,7 +133,7 @@ console.log(props);
                             <div className="post__footer">
                                 <ChatBubbleOutlineIcon fontSize="small"/>
 
-                                    {post.author._id === id ? <Button
+                                    {post.author._id === currId ? <Button
                                         onClick={(e) => {
                                             dispatch(deletePost(post._id, token));
                                             history.push(`/${props.tabName}`)

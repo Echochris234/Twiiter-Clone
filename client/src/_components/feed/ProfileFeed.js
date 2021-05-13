@@ -9,7 +9,7 @@ import { getPosts, deletePost, likePost } from "./../../_actions/getPosts";
 // import { getPosts, deletePost, likePost } from "../../_actions/getPosts";
 // import { Item, Icon } from "semantic-ui-react";
 
-import TweetBox from './Tweetbox.js'
+import ProfileTweetBox from './ProfileTweetbox.js'
 import './Feed.css'
 import Post from '../post/Post.js'
 
@@ -22,20 +22,7 @@ console.log(props);
     const dispatch = useDispatch();
 
     
-    // useEffect(() => {
-    //     dispatch(getPosts(id));
-    // }, [localStorage.getItem("userPosts"), dispatch]);
 
-    // const img = useSelector((state) => {console.log(state)})
-    
-    // const posts = useSelector((state) => state.handlePost) || [];
-
-    // console.log(posts);
-    // console.log(posts)
-    // let tweets = JSON.parse(localStorage.getItem('userPosts'));
-    // // const posts = useSelector((state) => state.handlePost) || [];
-    // //    setPost(posts);
-    // console.log(tweets);
  
     
     return (
@@ -48,8 +35,10 @@ console.log(props);
 
 
             {/* TweetBox */}
-            <TweetBox tabName={props.tabName.toLowerCase()} userData={id} token={token} />
+            <ProfileTweetBox tabName={props.tabName.toLowerCase()} name={props.name} userData={id} token={token} />
+            {/* <h2 style={{paddingLeft:20+"px"}}>{props.name}</h2> */}
 {/*
+
             {post.map(tweet => {
                 return (
                     <Post post={tweet} />

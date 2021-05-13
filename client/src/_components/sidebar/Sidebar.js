@@ -42,34 +42,34 @@ function Sidebar() {
             </Link>
             {/* <SidebarOption active text="Home" Icon={HomeIcon} /> */}
 
-            <Link to="/explore" style={{ textDecoration: 'none' }} className="text-dark">
+            <Link to="/explore" style={{ textDecoration: 'none', color: '#50b7f5' }} className="text-dark">
                 <SidebarOption text="Explore" Icon={SearchIcon} />
                 {' '}
 
             </Link>
             {/* <SidebarOption text="Explore" Icon={SearchIcon} /> */}
 
-            <Link to="/notifications" style={{ textDecoration: 'none' }} className="text-dark" disabled="true">
+            <Link to="/notifications" style={{ textDecoration: 'none', color: '#50b7f5' }} className="text-dark" disabled="true">
                 <SidebarOption text="Notifications" Icon={NotificationsNoneIcon} />
                 {' '}
 
             </Link>
             {/* <SidebarOption text="Notifications" Icon={NotificationsNoneIcon}/> */}
 
-            <Link to="/messages" style={{ textDecoration: 'none' }} className="text-dark" disabled="true">
+            <Link to="/messages" style={{ textDecoration: 'none', color: '#50b7f5' }} className="text-dark" disabled="true">
                 <SidebarOption text="Messages" Icon={MailOutlineIcon} />
                 {' '}
 
             </Link>
             {/* <SidebarOption text="Messages" Icon={MailOutlineIcon}/> */}
 
-            <Link to="/bookmarks" style={{ textDecoration: 'none' }} className="text-dark">
+            <Link to="/bookmarks" style={{ textDecoration: 'none', color: '#50b7f5' }} className="text-dark">
                 <SidebarOption active text="BookMarks" Icon={BookmarkBorderIcon} />
                 {' '}
 
             </Link>
             {/* <SidebarOption text="BookMarks" Icon={BookmarkBorderIcon}/> */}
-            <Link to="/lists" style={{ textDecoration: 'none' }} className="text-dark " >
+            <Link to="/lists" style={{ textDecoration: 'none', color: '#50b7f5' }} className="text-dark " >
                 <SidebarOption text="Lists" Icon={ListAltIcon} />
                 {' '}
 
@@ -77,7 +77,7 @@ function Sidebar() {
             
             {/* <SidebarOption text="Lists" Icon={ListAltIcon}/> */}
 
-            <Link to="/profile" style={{ textDecoration: 'none' }} >
+            <Link to="/profile" style={{ textDecoration: 'none', color: '#50b7f5' }} >
                 <SidebarOption active text="Profile" Icon={PermIdentityIcon} />
                 {' '}
             </Link>

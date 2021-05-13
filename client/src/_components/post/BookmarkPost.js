@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 import {  likePost} from "./../../_actions/getPosts";
 import { getBookmarks,removeBookmark } from "./../../_actions/bookmarks";
 
@@ -77,7 +77,18 @@ function BookmarkPost(props) {
                                         <div className="post__headerText">
                                             <h3>
 
-                                                {post.author.name}
+
+                                                <Link
+                                                    to={{
+                                                        pathname: `/profile/`,
+                                                        state: {
+                                                            id: post.author._id,
+                                                            token: token,
+                                                        },
+                                                    }}
+                                                >
+                                                    {post.author.name}
+                                                </Link>
                                                 <span className="post_headerSpecial">
                                                     <VerifiedUserIcon className="post_badge" /> @{post.author.email}
                                                 </span>
