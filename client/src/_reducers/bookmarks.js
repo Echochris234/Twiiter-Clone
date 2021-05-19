@@ -1,11 +1,8 @@
 const bookmarks = (initData = { bookmarks: [] }, action) => {
     
     switch (action.type) {
-        case "GET_BOOKMARKS":
-            
-            
-            
-            
+        case "GET_BOOKMARKS":  
+        console.log(action.payload)  ;
             return { bookmarks: action.payload };
     
             

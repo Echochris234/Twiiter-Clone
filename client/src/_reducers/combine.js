@@ -5,6 +5,7 @@ import handlePost from "./handlePost.js";
 import bookmarks from './bookmarks.js';
 import getFollow from "./getFollow";
 import following from "./following.js";
+import handleComment from "./handleComment.js"
 
 const combined = combineReducers({
   login,
@@ -13,6 +14,8 @@ const combined = combineReducers({
   bookmarks,
   following,
   getFollow,
+  handleComment,
+
 });
 
 export default combined;

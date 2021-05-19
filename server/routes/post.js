@@ -8,7 +8,8 @@ const {
   getPosts,
   getUserPosts,
   getASinglePost,
-  getBookmarkedPosts
+  getBookmarkedPosts,
+  
 } = require('../controller/post');
 const auth = require('../middleware/auth');
 
@@ -20,4 +21,5 @@ router.patch('/:id/like', auth, likePost);
 router.patch('/:id', auth, updatePost);
 router.delete('/:id', auth, deletePost);
 router.get("/bookmarks/:user", auth, getBookmarkedPosts);
+
 module.exports = router;

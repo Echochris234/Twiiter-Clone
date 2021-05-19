@@ -79,7 +79,7 @@ function BookmarkPost(props) {
 
                                                 <Link style={{ textDecoration: 'none', color: '#50b7f5' }}
                                                     to={{
-                                                        pathname: `/profile/`,
+                                                        pathname: `/profile/${post.author.name}`,
                                                         state: {
                                                             id: post.author._id,
                                                             token: token,

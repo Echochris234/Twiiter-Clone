@@ -16,7 +16,6 @@ export default function Landing() {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  console.log(user);
   
   if (user) {
 

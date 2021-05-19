@@ -12,7 +12,7 @@ import Post from '../post/Post.js'
 
 function Feed(props) {
 
-    console.log(props);
+    
     let id =props.id;
     let token=props.token;
     const dispatch = useDispatch();

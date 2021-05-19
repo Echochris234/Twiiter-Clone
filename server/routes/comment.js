@@ -8,6 +8,6 @@ const {
   numberOfComments,
 } = require('../controller/comment');
 
-router.post('/createcomment', auth, createComment);
+router.post('/createcomment',auth, createComment);
 router.post('/getcomments', getComments);
 module.exports = router;

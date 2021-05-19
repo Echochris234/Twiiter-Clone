@@ -1,5 +1,7 @@
 const getFollow = (initData = { Followers: "0", Following: "0" }, action) => {
+    console.log(action);
     switch (action.type) {
+        
         case "GET_FOLLOWER":
             return { ...initData, Followers: action.payload.data.followerCount };
         case "GET_FOLLOWING":

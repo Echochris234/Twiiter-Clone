@@ -44,6 +44,9 @@ const getPosts = (initData = { postsData: [] }, action) => {
             
             return { postData: mapNewPosts };
 
+
+        
+
         default:
             return initData;
     }

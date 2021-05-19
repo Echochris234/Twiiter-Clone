@@ -2,6 +2,7 @@ const Comment = require('../models/comment');
 const Post = require('../models/post');
 
 const createComment = async (req, res) => {
+  
   const comment = new Comment(req.body);
   comment.save((err, comment) => {
     if (err) return res.json(err);
@@ -10,14 +11,16 @@ const createComment = async (req, res) => {
       comment.populate('author').execPopulate((err, comment) => {
         if (err) return res.json(err);
         result.comments = result.comments.concat(comment._id);
+        console.log(result)
         result.save();
-        res.status(201).json(comment);
+        res.status(201).json(result.comments);
       });
     });
   });
 };
 
 const getComments = async (req, res) => {
+  // console.log(req.body.postId);s
   Comment.find({ postId: req.body.postId })
     .populate('author')
     .exec((err, post) => {

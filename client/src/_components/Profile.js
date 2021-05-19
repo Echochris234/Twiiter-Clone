@@ -15,13 +15,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 function Profile( props) {
   let userData = localStorage.getItem("userInfo");
 
-  // console.log(JSON.parse(userData))
-  
-  // if (props.location.state){
-  //     console.log(props.location.state.id); 
-  // }
   const id = JSON.parse(userData).result._id;
-  // const profId = props.location.state.id;
+  
   const token = JSON.parse(userData).token;
 
 

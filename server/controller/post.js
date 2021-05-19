@@ -93,6 +93,26 @@ const likePost = async (req, res) => {
     });
 };
 
+// const createComment = async (req, res)=>{
+//   Post.findOne({_id: req.params.id})
+//     .populate('author')
+//     .sort({createAt:-1})
+//     .exec((err,result)=>{
+//       if(err) return res.status(404).json(err);
+//       const foundId = results.comments.findIndex(
+//         (id)=>String(id)===String(req.user._id)
+//       );
+//       if(foundId=== -1){
+//         result.comments = result.comments.concat({_id: req.user._id, comment: req.comment});
+//       }else{
+//         result.comments=result.comments.filter(
+//           (id)=> String(id) !== String(req.user._id)
+//         );
+//       }
+//       result.save();
+//       rest.status(200).json(result);
+//     });
+// }
 const getBookmarkedPosts = async (req, res) => {
   const bookmark = await Bookmark.find({ userID: req.user._id });
   if (bookmark) {
@@ -118,4 +138,5 @@ module.exports = {
   getUserPosts,
   getASinglePost,
   getBookmarkedPosts,
+  // createComment,
 };
